@@ -73,14 +73,25 @@ swagger ui: http://localhost:8080/swagger-ui/index.html
 Запрос:
 ```json
 {
+  // универсальные поля
   "serialNumber": "string",
   "manufacturer": "string",
-  "price": 100,
-  "quantity": 2,
-  "formFactor": "DESKTOP",
-  "capacityGb": 512,
-  "diagonal": 15.6,
-  "size": "INCH_13"
+  "price": 0,      // price > 0
+  "quantity": 10,   // quantity >= 0
+  
+  // поля специфичные для определенного продукта (выбрать нужное)
+  
+  // для COMPUTER. Допустимые значения: NETTOP, MONOBLOCK, DESKTOP
+  "formFactor": "DESKTOP", 
+  
+  // для HARD_DRIVE. capacityGb > 0
+  "capacityGb": 0,
+  
+  // для MONITOR. diagonal >= 0.1 и один символ после запятой
+  "diagonal": 0.1, 
+  
+  // для LAPTOP. Допустимые значения: INCH_13, INCH_14, INCH_15, INCH_17
+  "size": "INCH_13" 
 }
 ```
 Обновляются только переданные (не null) поля.
