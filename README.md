@@ -73,11 +73,11 @@ swagger ui: http://localhost:8080/swagger-ui/index.html
 {
   "serialNumber": "string",
   "manufacturer": "string",
-  "price": 0,
-  "quantity": 0,
+  "price": 100,
+  "quantity": 2,
   "formFactor": "DESKTOP",
-  "capacityGb": 0,
-  "diagonal": 0.1,
+  "capacityGb": 512,
+  "diagonal": 15.6,
   "size": "INCH_13"
 }
 ```
