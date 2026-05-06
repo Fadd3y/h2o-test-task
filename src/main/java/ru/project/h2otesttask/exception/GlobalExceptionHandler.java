@@ -3,6 +3,7 @@ package ru.project.h2otesttask.exception;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -41,6 +42,12 @@ public class GlobalExceptionHandler {
         ));
 
     return ResponseEntity.badRequest().body(errors);
+  }
+
+  @ExceptionHandler(DataIntegrityViolationException.class)
+  public ResponseEntity<ErrorResponse> handleDb(DataIntegrityViolationException ex) {
+    return ResponseEntity.badRequest()
+        .body(new ErrorResponse(400, "Database constraint violated"));
   }
 
   @ExceptionHandler(Exception.class)

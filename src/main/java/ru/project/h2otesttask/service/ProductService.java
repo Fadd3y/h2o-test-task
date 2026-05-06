@@ -34,6 +34,11 @@ public class ProductService {
   @Transactional
   public ProductResponseDto create(CreateProductRequestDto requestDto) {
     ProductEntity product = productMapper.createRequestDtoToEntity(requestDto);
+
+   if(productsRepository.existsBySerialNumber(requestDto.getSerialNumber())) {
+     throw new IllegalArgumentException("This serial number already exists");
+   }
+
     ProductEntity result = productsRepository.save(product);
 
     return productMapper.entityToResponseDto(result);
