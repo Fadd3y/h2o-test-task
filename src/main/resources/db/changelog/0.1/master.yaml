@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - include:
+      file: create-table-products.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: create-table-computers.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: create-table-hard-drives.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: create-table-laptops.sql
+      relativeToChangelogFile: true
+
+  - include:
+      file: create-table-monitors.sql
+      relativeToChangelogFile: true
